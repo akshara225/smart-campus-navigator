@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ESEC Navix</title>
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     TOP BAR
+========================================= -->
+
+<header class="topbar">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            🎓
+        </div>
+
+        <div>
+
+            <h1>
+                ESEC Navix
+            </h1>
+
+            <p>
+                Erode Sengunthar Engineering College
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <button
+        id="emergencyBtn"
+        class="emergency-btn"
+    >
+        🚨 Emergency
+    </button>
+
+</header>
+
+
+
+<!-- =========================================
+     SEARCH
+========================================= -->
+
+<div class="search-box">
+
+    <span>🔍</span>
+
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Search campus buildings..."
+        autocomplete="off"
+    >
+
+    <div id="searchResults"></div>
+
+</div>
+
+
+
+<!-- =========================================
+     STUDENT ASSISTANCE DASHBOARD
+========================================= -->
+
+<div class="student-dashboard">
+
+    <div class="dashboard-title">
+
+        <span>🎓</span>
+
+        <div>
+
+            <h2>
+                Student Assistance
+            </h2>
+
+            <small>
+                Quick campus access
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <button
+        onclick="findMyLocation()"
+        class="assist-btn"
+    >
+        <span>📍</span>
+        <div>
+            <strong>Where Am I?</strong>
+            <small>Find my location</small>
+        </div>
+    </button>
+
+
+    <button
+        onclick="quickNavigate(2)"
+        class="assist-btn"
+    >
+        <span>📚</span>
+        <div>
+            <strong>Library</strong>
+            <small>Central Library</small>
+        </div>
+    </button>
+
+
+    <button
+        onclick="quickNavigate(11)"
+        class="assist-btn"
+    >
+        <span>🍴</span>
+        <div>
+            <strong>Canteen</strong>
+            <small>Mess & Canteen</small>
+        </div>
+    </button>
+
+
+    <button
+        onclick="quickNavigate(7)"
+        class="assist-btn"
+    >
+        <span>🏠</span>
+        <div>
+            <strong>Hostel</strong>
+            <small>Pearl Hostel</small>
+        </div>
+    </button>
+
+
+    <button
+        onclick="showAcademicBlocks()"
+        class="assist-btn"
+    >
+        <span>🧪</span>
+        <div>
+            <strong>Academic Blocks</strong>
+            <small>Find classrooms</small>
+        </div>
+    </button>
+
+
+    <button
+        onclick="quickNavigate(5)"
+        class="assist-btn"
+    >
+        <span>🏀</span>
+        <div>
+            <strong>Sports</strong>
+            <small>Sports facilities</small>
+        </div>
+    </button>
+
+
+    <button
+        onclick="quickNavigate(13)"
+        class="assist-btn emergency-assist"
+    >
+        <span>🚨</span>
+        <div>
+            <strong>Emergency</strong>
+            <small>Emergency point</small>
+        </div>
+    </button>
+
+</div>
+
+
+
+<!-- =========================================
+     ROUTE CARD
+========================================= -->
+
+<div class="route-card">
+
+    <div class="card-title">
+
+        <span>🧭</span>
+
+        <div>
+
+            <h2>
+                Find a Route
+            </h2>
+
+            <small>
+                Navigate around ESEC campus
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <label>
+        Starting Point
+    </label>
+
+    <select id="fromLocation">
+
+        <option value="">
+            Select starting point
+        </option>
+
+    </select>
+
+
+    <label>
+        Destination
+    </label>
+
+    <select id="toLocation">
+
+        <option value="">
+            Select destination
+        </option>
+
+    </select>
+
+
+    <button id="routeBtn">
+        🚶 Find Shortest Route
+    </button>
+
+
+    <button
+        id="myLocationRouteBtn"
+        class="location-route-btn"
+    >
+        📍 Use My Location
+    </button>
+
+
+    <div id="routeInfo"></div>
+
+</div>
+
+
+
+<!-- =========================================
+     MAP
+========================================= -->
+
+<div id="map"></div>
+
+
+
+<!-- =========================================
+     CAMPUS LEGEND
+========================================= -->
+
+<div class="legend">
+
+    <h3>
+        Campus Guide
+    </h3>
+
+    <div>
+        <span>🏢</span>
+        Academic
+    </div>
+
+    <div>
+        <span>📚</span>
+        Library
+    </div>
+
+    <div>
+        <span>🏠</span>
+        Hostel
+    </div>
+
+    <div>
+        <span>🍴</span>
+        Food
+    </div>
+
+    <div>
+        <span>🏀</span>
+        Sports
+    </div>
+
+    <div>
+        <span>🚨</span>
+        Emergency
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     BUILDING INFO PANEL
+========================================= -->
+
+<div
+    id="infoPanel"
+    class="info-panel"
+>
+
+    <button
+        id="closePanel"
+        class="close-btn"
+    >
+        ✕
+    </button>
+
+
+    <div
+        id="infoIcon"
+        class="info-icon"
+    >
+        🏢
+    </div>
+
+
+    <h2 id="buildingName">
+        Building
+    </h2>
+
+
+    <p id="buildingDescription">
+        Description
+    </p>
+
+
+    <div id="buildingDetails"></div>
+
+</div>
+
+
+
+<!-- =========================================
+     ACADEMIC BLOCK POPUP
+========================================= -->
+
+<div
+    id="academicPopup"
+    class="academic-popup"
+>
+
+    <button
+        class="close-btn"
+        onclick="closeAcademicPopup()"
+    >
+        ✕
+    </button>
+
+    <h2>
+        🧪 Academic Blocks
+    </h2>
+
+    <p>
+        Select an academic block to locate it.
+    </p>
+
+
+    <button onclick="quickNavigate(8)">
+        🏢 CSE & Administrative Block
+    </button>
+
+
+    <button onclick="quickNavigate(9)">
+        🏢 ECE & EIE Block
+    </button>
+
+
+    <button onclick="quickNavigate(10)">
+        🔧 Workshop Building
+    </button>
+
+</div>
+
+
+
+<!-- =========================================
+     LEAFLET
+========================================= -->
+
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+></script>
+
+
+<script src="app.js"></script>
+
+
+</body>
+
+</html>

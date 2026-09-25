@@ -1,0 +1,1014 @@
+* {
+
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+body {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: #111827;
+
+    overflow: hidden;
+
+}
+
+
+
+/* =========================================
+   TOP BAR
+========================================= */
+
+.topbar {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 72px;
+
+    background:
+        rgba(15, 23, 42, 0.97);
+
+    color: white;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding:
+        10px 22px;
+
+    z-index: 10000;
+
+    backdrop-filter: blur(12px);
+
+}
+
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.brand-icon {
+
+    width: 45px;
+    height: 45px;
+
+    background: #2563eb;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 23px;
+
+}
+
+
+.brand h1 {
+
+    font-size: 20px;
+
+}
+
+
+.brand p {
+
+    color: #cbd5e1;
+
+    font-size: 11px;
+
+    margin-top: 4px;
+
+}
+
+
+
+/* =========================================
+   EMERGENCY
+========================================= */
+
+.emergency-btn {
+
+    background: #dc2626;
+
+    border: none;
+
+    color: white;
+
+    padding:
+        12px 17px;
+
+    border-radius: 10px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+
+.emergency-btn:hover {
+
+    background: #b91c1c;
+
+}
+
+
+
+/* =========================================
+   MAP
+========================================= */
+
+#map {
+
+    position: fixed;
+
+    top: 72px;
+    bottom: 0;
+
+    left: 0;
+    right: 0;
+
+    z-index: 1;
+
+}
+
+
+
+/* =========================================
+   SEARCH
+========================================= */
+
+.search-box {
+
+    position: fixed;
+
+    top: 88px;
+    left: 22px;
+
+    width: 350px;
+
+    background: white;
+
+    border-radius: 13px;
+
+    box-shadow:
+        0 8px 30px
+        rgba(0,0,0,0.18);
+
+    z-index: 6000;
+
+    padding:
+        4px 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+}
+
+
+.search-box input {
+
+    width: 100%;
+
+    padding:
+        12px 4px;
+
+    border: none;
+
+    outline: none;
+
+    font-size: 14px;
+
+}
+
+
+#searchResults {
+
+    position: absolute;
+
+    top: 52px;
+
+    left: 0;
+    right: 0;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 20px
+        rgba(0,0,0,0.15);
+
+}
+
+
+.search-item {
+
+    background: white;
+
+    padding: 12px 15px;
+
+    border-bottom:
+        1px solid #e5e7eb;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+}
+
+
+.search-item:hover {
+
+    background: #eff6ff;
+
+}
+
+
+
+/* =========================================
+   STUDENT DASHBOARD
+========================================= */
+
+.student-dashboard {
+
+    position: fixed;
+
+    top: 150px;
+    left: 22px;
+
+    width: 350px;
+
+    max-height:
+        calc(100vh - 170px);
+
+    overflow-y: auto;
+
+    background:
+        rgba(255,255,255,0.97);
+
+    padding: 17px;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 10px 35px
+        rgba(0,0,0,0.20);
+
+    z-index: 5000;
+
+}
+
+
+.dashboard-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    margin-bottom: 13px;
+
+}
+
+
+.dashboard-title > span {
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background: #eff6ff;
+
+    border-radius: 10px;
+
+    font-size: 20px;
+
+}
+
+
+.dashboard-title h2 {
+
+    font-size: 17px;
+
+}
+
+
+.dashboard-title small {
+
+    color: #64748b;
+
+    font-size: 11px;
+
+}
+
+
+
+.assist-btn {
+
+    width: 100%;
+
+    border: none;
+
+    background: #f8fafc;
+
+    padding: 10px;
+
+    margin-bottom: 7px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    text-align: left;
+
+    transition: 0.2s;
+
+}
+
+
+.assist-btn:hover {
+
+    background: #eff6ff;
+
+    transform:
+        translateX(3px);
+
+}
+
+
+.assist-btn > span {
+
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: white;
+
+    border-radius: 8px;
+
+    font-size: 17px;
+
+}
+
+
+.assist-btn strong {
+
+    display: block;
+
+    font-size: 12px;
+
+}
+
+
+.assist-btn small {
+
+    display: block;
+
+    color: #64748b;
+
+    font-size: 9px;
+
+    margin-top: 2px;
+
+}
+
+
+.emergency-assist {
+
+    background: #fee2e2;
+
+}
+
+
+.emergency-assist:hover {
+
+    background: #fecaca;
+
+}
+
+
+
+/* =========================================
+   ROUTE CARD
+========================================= */
+
+.route-card {
+
+    position: fixed;
+
+    top: 150px;
+    right: 22px;
+
+    width: 330px;
+
+    background:
+        rgba(255,255,255,0.97);
+
+    padding: 18px;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 10px 35px
+        rgba(0,0,0,0.20);
+
+    z-index: 5000;
+
+}
+
+
+.card-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    margin-bottom: 18px;
+
+}
+
+
+.card-title > span {
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #eff6ff;
+
+    border-radius: 10px;
+
+    font-size: 20px;
+
+}
+
+
+.card-title h2 {
+
+    font-size: 17px;
+
+}
+
+
+.card-title small {
+
+    color: #64748b;
+
+    font-size: 11px;
+
+}
+
+
+.route-card label {
+
+    display: block;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    margin-bottom: 6px;
+
+    color: #475569;
+
+}
+
+
+.route-card select {
+
+    width: 100%;
+
+    padding: 12px;
+
+    margin-bottom: 13px;
+
+    border:
+        1px solid #dbe2ea;
+
+    border-radius: 9px;
+
+    background: white;
+
+    outline: none;
+
+}
+
+
+#routeBtn {
+
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+
+#routeBtn:hover {
+
+    background: #1d4ed8;
+
+}
+
+
+.location-route-btn {
+
+    width: 100%;
+
+    margin-top: 8px;
+
+    padding: 11px;
+
+    border:
+        1px solid #2563eb;
+
+    border-radius: 9px;
+
+    background: white;
+
+    color: #2563eb;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+
+.location-route-btn:hover {
+
+    background: #eff6ff;
+
+}
+
+
+#routeInfo {
+
+    margin-top: 13px;
+
+    padding: 11px;
+
+    background: #f8fafc;
+
+    border-radius: 9px;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+
+}
+
+
+
+/* =========================================
+   LEGEND
+========================================= */
+
+.legend {
+
+    position: fixed;
+
+    right: 22px;
+    bottom: 25px;
+
+    width: 165px;
+
+    background:
+        rgba(255,255,255,0.95);
+
+    padding: 15px;
+
+    border-radius: 13px;
+
+    box-shadow:
+        0 7px 25px
+        rgba(0,0,0,0.18);
+
+    z-index: 4000;
+
+}
+
+
+.legend h3 {
+
+    font-size: 14px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.legend div {
+
+    font-size: 12px;
+
+    margin: 7px 0;
+
+    display: flex;
+
+    gap: 8px;
+
+}
+
+
+
+/* =========================================
+   INFO PANEL
+========================================= */
+
+.info-panel {
+
+    display: none;
+
+    position: fixed;
+
+    bottom: 25px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    width: 420px;
+
+    background: white;
+
+    padding: 22px;
+
+    border-radius: 17px;
+
+    box-shadow:
+        0 12px 40px
+        rgba(0,0,0,0.25);
+
+    z-index: 9000;
+
+}
+
+
+.close-btn {
+
+    position: absolute;
+
+    top: 12px;
+    right: 14px;
+
+    border: none;
+
+    background: #f1f5f9;
+
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+}
+
+
+.info-icon {
+
+    font-size: 30px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.info-panel h2 {
+
+    font-size: 19px;
+
+    margin-bottom: 7px;
+
+}
+
+
+.info-panel > p {
+
+    color: #64748b;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    margin-bottom: 12px;
+
+}
+
+
+#buildingDetails {
+
+    background: #f8fafc;
+
+    padding: 11px;
+
+    border-radius: 10px;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+
+}
+
+
+
+/* =========================================
+   MAP MARKER
+========================================= */
+
+.custom-marker {
+
+    background: white;
+
+    border:
+        2px solid #2563eb;
+
+    border-radius: 50%;
+
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    font-size: 18px;
+
+    box-shadow:
+        0 3px 10px
+        rgba(0,0,0,0.25);
+
+}
+
+
+.emergency-marker {
+
+    border-color: #dc2626;
+
+    background: #fee2e2;
+
+}
+
+
+
+/* =========================================
+   ACADEMIC POPUP
+========================================= */
+
+.academic-popup {
+
+    display: none;
+
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width: 330px;
+
+    background: white;
+
+    padding: 24px;
+
+    border-radius: 17px;
+
+    box-shadow:
+        0 15px 50px
+        rgba(0,0,0,0.30);
+
+    z-index: 11000;
+
+}
+
+
+.academic-popup h2 {
+
+    font-size: 18px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.academic-popup p {
+
+    color: #64748b;
+
+    font-size: 12px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.academic-popup button {
+
+    width: 100%;
+
+    padding: 11px;
+
+    margin-bottom: 8px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #f1f5f9;
+
+    text-align: left;
+
+    cursor: pointer;
+
+}
+
+
+.academic-popup button:hover {
+
+    background: #eff6ff;
+
+}
+
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .topbar {
+
+        height: 62px;
+
+        padding:
+            7px 10px;
+
+    }
+
+
+    .brand-icon {
+
+        width: 38px;
+        height: 38px;
+
+        font-size: 19px;
+
+    }
+
+
+    .brand h1 {
+
+        font-size: 14px;
+
+    }
+
+
+    .brand p {
+
+        font-size: 8px;
+
+    }
+
+
+    .emergency-btn {
+
+        padding:
+            9px 10px;
+
+        font-size: 10px;
+
+    }
+
+
+    #map {
+
+        top: 62px;
+
+    }
+
+
+    .search-box {
+
+        top: 74px;
+
+        left: 10px;
+        right: 10px;
+
+        width: auto;
+
+    }
+
+
+    .student-dashboard {
+
+        top: 130px;
+
+        left: 10px;
+        right: 10px;
+
+        width: auto;
+
+        max-height: 240px;
+
+    }
+
+
+    .route-card {
+
+        top: 385px;
+
+        left: 10px;
+        right: 10px;
+
+        width: auto;
+
+    }
+
+
+    .legend {
+
+        display: none;
+
+    }
+
+
+    .info-panel {
+
+        width:
+            calc(100% - 20px);
+
+        bottom: 10px;
+
+    }
+
+}
